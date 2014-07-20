@@ -1,16 +1,16 @@
-wordpress/.htaccess
-wordpress/wp-content/themes/krondafrank/compass_app_log.txt
 wordpress/wp-content/uploads
 wordpress/wp-content/w3tc
 wordpress/wp-content/avatars
 wordpress/wp-content/cache
 wordpress/local-config.php
-debug_log.txt
 .buildpath
 .project
 .settings
+*sublime*
+*.sass-cache*
+*debug.log*
+docs
 db
-docs/
 *~
 .DS_Store
 /.gitattributes
@@ -19,3 +19,4 @@ docs/
 *compass_app_log.txt*
 webroot
 backups
+
