@@ -22,7 +22,7 @@ set :local_path, "/Users/Kronda/Sites/oneanima"
 
 # Use a remote cache to speed things up
 set :deploy_via, :remote_cache
-ssh_options[:user] = 'krondaco'
+ssh_options[:user] = 'oneanima'
 
 # Multistage support - see config/deploy/[STAGE].rb for specific configs
 set :default_stage, "dev"
