@@ -1,41 +1,95 @@
-/* =Notes
---------------------------------------------------------------
-
-This stylesheet uses rem values with a pixel fallback. The rem
-values (and line heights) are calculated using two variables:
-
-$rembase:     14;
-$line-height: 24;
-
----------- Examples
-
-* Use a pixel value with a rem fallback for font-size, padding, margins, etc.
-  padding: 5px 0;
-  padding: 0.357142857rem 0; (5 / $rembase)
-
-* Set a font-size and then set a line-height based on the font-size
-  font-size: 16px
-  font-size: 1.142857143rem; (16 / $rembase)
-  line-height: 1.5; ($line-height / 16)
-
----------- Vertical spacing
-
-Vertical spacing between most elements should use 24px or 48px
-to maintain vertical rhythm:
-
-.my-new-div {
-  margin: 24px 0;
-  margin: 1.714285714rem 0; ( 24 / $rembase )
+/* Welcome to Compass.
+ *
+ * A word about SASS (http://sass-lang.com/)
+ * --------------------------------------------------------------
+ * This stylesheet compiles to stylesheets/style.css
+ * The normal child theme stylesheet at cornerstone/style.css imports the sass-generated stylesheet. 
+ * 
+ * If you don't use SASS but want to make further modifications, do so in 
+ * wp-content/themes/cornerstone/style.css file AFTER the import statements. 
+*/
+/* line 2, ../sass/neat/grid/_grid.scss */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
----------- Further reading
+/* Column Classes
+    Link: http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css
+--------------------------------------------- */
+@media screen and (min-width: 768px) {
+  /* line 16, ../sass/base/_vendor.scss */
+  .five-sixths,
+  .four-sixths,
+  .one-fourth,
+  .one-half,
+  .one-sixth,
+  .one-third,
+  .three-fourths,
+  .three-sixths,
+  .two-fourths,
+  .two-sixths,
+  .two-thirds {
+    float: left;
+    margin-left: 2.564102564102564%;
+  }
 
-http://snook.ca/archives/html_and_css/font-size-with-rem
-http://blog.typekit.com/2011/11/09/type-study-sizing-the-legible-letter/
+  /* line 23, ../sass/base/_vendor.scss */
+  .one-half,
+  .three-sixths,
+  .two-fourths {
+    width: 48.717948717948715%;
+  }
 
-/* A word about SASS (http://sass-lang.com/)
---------------------------------------------------------------
-This stylesheet compiles to stylesheets/style.css
-The normal child theme stylesheet at $themealicious/style.css imports the parent theme stylesheet and the sass-generated stylesheet. 
+  /* line 28, ../sass/base/_vendor.scss */
+  .one-third,
+  .two-sixths {
+    width: 31.623931623931625%;
+  }
 
-If you don't use SASS but want to make further modifications, do so in wp-content/themes/$themealicious/style.css file AFTER the import statements. */
+  /* line 33, ../sass/base/_vendor.scss */
+  .four-sixths,
+  .two-thirds {
+    width: 65.81196581196582%;
+  }
+
+  /* line 37, ../sass/base/_vendor.scss */
+  .one-fourth {
+    width: 23.076923076923077%;
+  }
+
+  /* line 41, ../sass/base/_vendor.scss */
+  .three-fourths {
+    width: 74.35897435897436%;
+  }
+
+  /* line 45, ../sass/base/_vendor.scss */
+  .one-sixth {
+    width: 14.52991452991453%;
+  }
+
+  /* line 49, ../sass/base/_vendor.scss */
+  .five-sixths {
+    width: 82.90598290598291%;
+  }
+
+  /* line 53, ../sass/base/_vendor.scss */
+  .first {
+    clear: both;
+    margin-left: 0;
+  }
+}
+/* line 2, ../sass/base/_html.scss */
+.builder-text-columns-1 .builder-section-content {
+  max-width: 60%;
+}
+
+/* line 3, ../sass/component/_home.scss */
+.home .builder-section-first p {
+  font-size: 1.4em;
+}
+/* line 6, ../sass/component/_home.scss */
+.home .builder-section-first .ttfmake-button {
+  font-size: 0.8em;
+}
