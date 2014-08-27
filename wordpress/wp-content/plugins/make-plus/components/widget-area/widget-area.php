@@ -111,7 +111,11 @@ class TTFMP_Widget_Area {
 	 * @return void
 	 */
 	public function admin_enqueue_scripts( $hook_suffix ) {
-		if ( ( 'post.php' !== $hook_suffix && 'post-new.php' !== $hook_suffix ) || 'page' !== get_post_type() ) {
+		// Have to be careful with this test because this function was introduced in Make 1.2.0.
+		$post_type_supports_builder = ( function_exists( 'ttfmake_post_type_supports_builder' ) ) ? ttfmake_post_type_supports_builder( get_post_type() ) : false;
+		$post_type_is_page          = ( 'page' === get_post_type() );
+
+		if ( ( 'post.php' !== $hook_suffix && 'post-new.php' !== $hook_suffix ) || ( ! $post_type_supports_builder && ! $post_type_is_page ) ) {
 			return;
 		}
 
@@ -200,7 +204,7 @@ class TTFMP_Widget_Area {
 						<input placeholder="<?php esc_attr_e( 'Enter name here', 'make-plus' ); ?>" type="text" name="<?php echo $section_name; ?>[sidebar-label]" class="ttfmake-title" value="<?php echo sanitize_text_field( $sidebar_label ); ?>" autocomplete="off" />
 						<?php if ( true === $ttfmake_is_js_template || ! isset( $widget_data ) || empty( $widget_data ) ) : ?>
 							<p><?php _e( 'There are no widgets in this area. After saving this page, go to the Theme Customizer to manage your widgets.', 'make-plus' ); ?></p>
-						<?php else : ?>
+						<?php elseif ( isset( $widget_data ) && ! empty( $widget_data ) ): ?>
 							<p><?php _e( 'To manage your widgets, please go to the Theme Customizer.', 'make-plus' ); ?></p>
 							<br />
 							<p><strong><?php _e( 'Widgets in this area:', 'make-plus' ); ?></strong></p>

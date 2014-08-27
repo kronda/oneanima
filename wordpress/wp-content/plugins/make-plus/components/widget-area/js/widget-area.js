@@ -35,7 +35,7 @@
 
 					$overlay
 						.css({
-							zIndex: 10
+							zIndex: 9999
 						})
 						.animate({
 							opacity: 1

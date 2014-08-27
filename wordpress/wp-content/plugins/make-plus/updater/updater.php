@@ -56,7 +56,9 @@ class TTF_Updater {
 	 * @return TTF_Updater
 	 */
 	public function __construct() {
-		include dirname( __FILE__ ) . '/api-key.php';
+		include untrailingslashit( dirname( __FILE__ ) ) . '/api-key.php';
+
+		//set_site_transient( 'update_plugins', null );
 
 		// Setup the updater config
 		add_action( 'admin_init', array( $this, 'updater_config' ) );
@@ -67,7 +69,6 @@ class TTF_Updater {
 
 		// Override the requests for the plugin and theme APIs
 		add_filter( 'plugins_api', array( $this, 'plugins_api' ), 10, 3 );
-		add_filter( 'themes_api', array( $this, 'themes_api' ), 10, 3 );
 
 		// Reject update if API key is not available
 		add_action( 'admin_init', array( $this, 'redirect_if_no_key' ) );
@@ -96,7 +97,7 @@ class TTF_Updater {
 	 * @return object               The modified plugin check update object.
 	 */
 	public function pre_set_site_transient_update_plugins( $update ) {
-		if ( isset( $update->response ) && isset( $this->config['file'] ) && isset( $this->config['slug'] ) ) {
+		if ( isset( $update->response ) && isset( $this->config['file'] ) && isset( $this->config['slug'] ) && isset( $this->config['current_version'] ) ) {
 			unset( $update->response[ $this->config['file'] ] );
 
 			// Query the feed for data about the plugin or theme
@@ -115,22 +116,19 @@ class TTF_Updater {
 
 			$this_data = $data[ $this->config['slug'] ];
 
-			// Only continue if there is a new version
-			if ( 1 !== version_compare( $this_data->version, $this->config['current_version'] ) ) {
-				return $update;
-			}
-
 			// Set the appropriate values in the object
 			if ( isset( $update->checked ) ) {
 				$update->checked[ $this->config['file'] ] = $this_data->version;
 			}
 
-			$update->response[ $this->config['file'] ]              = new stdClass();
-			$update->response[ $this->config['file'] ]->new_version = $this_data->version;
-			$update->response[ $this->config['file'] ]->url         = $this_data->homepage;
-			$update->response[ $this->config['file'] ]->slug        = $this->config['slug'];
-			$update->response[ $this->config['file'] ]->plugin      = $this->config['file'];
-			$update->response[ $this->config['file'] ]->package     = $this->get_download_link();
+			if ( 1 === version_compare( $this_data->version, $this->config['current_version'] ) ) {
+				$update->response[ $this->config['file'] ]              = new stdClass();
+				$update->response[ $this->config['file'] ]->new_version = $this_data->version;
+				$update->response[ $this->config['file'] ]->url         = $this_data->homepage;
+				$update->response[ $this->config['file'] ]->slug        = $this->config['slug'];
+				$update->response[ $this->config['file'] ]->plugin      = $this->config['file'];
+				$update->response[ $this->config['file'] ]->package     = $this->get_download_link();
+			}
 		}
 
 		return $update;
@@ -145,6 +143,40 @@ class TTF_Updater {
 	 * @return object               The modified theme check update object.
 	 */
 	public function pre_set_site_transient_update_themes( $update ) {
+		if ( isset( $update->response ) && isset( $this->config['slug'] ) && isset( $this->config['current_version'] ) ) {
+			unset( $update->response[ $this->config['slug'] ] );
+
+			// Query the feed for data about the plugin or theme
+			$request = wp_remote_get( $this->feed );
+
+			if ( 200 !== (int) wp_remote_retrieve_response_code( $request ) ) {
+				return $update;
+			}
+
+			$data = (array) json_decode( wp_remote_retrieve_body( $request ) );
+
+			// Make sure the desired plugin or theme is available
+			if ( ! isset( $data[ $this->config['slug'] ] ) ) {
+				return $update;
+			}
+
+			$this_data = $data[ $this->config['slug'] ];
+
+			// Set the appropriate values in the object
+			if ( isset( $update->checked ) ) {
+				$update->checked[ $this->config['slug'] ] = $this_data->version;
+			}
+
+			if ( 1 === version_compare( $this_data->version, $this->config['current_version'] ) ) {
+				$update->response[ $this->config['slug'] ] = array(
+					'theme'       => $this->config['slug'],
+					'new_version' => $this_data->version,
+					'url'         => $this_data->homepage,
+					'package'     => $this->get_download_link(),
+				);
+			}
+		}
+
 		return $update;
 	}
 
@@ -189,20 +221,6 @@ class TTF_Updater {
 	}
 
 	/**
-	 * Override the standard themes API request when updating a certain theme.
-	 *
-	 * @since  1.0.0.
-	 *
-	 * @param  bool                    $default    False allows the default request. Non-false value cancels the default request.
-	 * @param  string                  $action     The themes API request being made. Represents the info being requested.
-	 * @param  object                  $theme      Theme Info API object.
-	 * @return bool|WP_Error|object                False to do nothing; WP_Error if something goes wrong; object if providing other information.
-	 */
-	public function themes_api( $default, $action, $theme ) {
-		return $default;
-	}
-
-	/**
 	 * Get the download link for the plugin or theme package.
 	 *
 	 * @since  1.0.0.
@@ -227,11 +245,16 @@ class TTF_Updater {
 	public function redirect_if_no_key() {
 		global $pagenow;
 
+		// Plugin conditions
 		$single_plugin_update   = ( 'update.php' === $pagenow && isset( $_GET['action'] ) && 'upgrade-plugin' === $_GET['action'] && isset( $this->config['file'] ) && isset( $_GET['plugin'] ) && $this->config['file'] === $_GET['plugin'] );
 		$multiple_plugin_update = ( 'update-core.php' === $pagenow && isset( $_GET['action'] ) && 'do-plugin-upgrade' === $_GET['action'] && isset( $_POST['checked'] ) && isset( $this->config['file'] ) && in_array( $this->config['file'], $_POST['checked'] ) );
 
+		// Theme conditions
+		$single_theme_update   = ( 'update.php' === $pagenow && isset( $_GET['action'] ) && 'upgrade-theme' === $_GET['action'] && isset( $_GET['theme'] ) && $this->config['slug'] === $_GET['theme'] );
+		$multiple_theme_update = ( 'update-core.php' === $pagenow && isset( $_GET['action'] ) && 'do-theme-upgrade' === $_GET['action'] && isset( $_POST['checked'] ) && isset( $this->config['slug'] ) && in_array( $this->config['slug'], $_POST['checked'] ) );
+
 		// Only redirect when in the correct context
-		if ( false === $single_plugin_update && false === $multiple_plugin_update ) {
+		if ( false === $single_plugin_update && false === $multiple_plugin_update && false === $single_theme_update && false === $multiple_theme_update ) {
 			return;
 		}
 
@@ -240,18 +263,34 @@ class TTF_Updater {
 			return;
 		}
 
-		// Redirect to the auth page
-		wp_safe_redirect(
-			add_query_arg(
+		// Generate the redirect based on the type
+		if ( 'plugin' === $this->config['type'] ) {
+			$redirect = add_query_arg(
 				array(
 					'action' => $_GET['action'],
 					'plugin' => $this->config['file'],
 					'page'   => 'updater_auth_page',
 				),
 				admin_url( 'tools.php' )
-			)
-		);
-		exit();
+			);
+
+			// Redirect to the auth page
+			wp_safe_redirect( $redirect );
+			exit();
+		} else if ( 'theme' === $this->config['type'] ) {
+			$redirect = add_query_arg(
+				array(
+					'action' => $_GET['action'],
+					'theme'  => $this->config['slug'],
+					'page'   => 'updater_auth_page',
+				),
+				admin_url( 'tools.php' )
+			);
+
+			// Redirect to the auth page
+			wp_safe_redirect( $redirect );
+			exit();
+		}
 	}
 
 	/**

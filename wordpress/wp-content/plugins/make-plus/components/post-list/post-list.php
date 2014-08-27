@@ -138,6 +138,7 @@ class TTFMP_Post_List {
 			'sortby' => 'date-desc',
 			'keyword' => '',
 			'count' => 6,
+			'offset' => 0,
 			'taxonomy' => 'all',
 		);
 		$d = wp_parse_args( $options, $defaults );
@@ -147,7 +148,8 @@ class TTFMP_Post_List {
 			'post_status' => 'publish',
 			'ignore_sticky_posts' => true,
 			'post_type' => $d['type'],
-			'posts_per_page' => $d['count']
+			'posts_per_page' => $d['count'],
+			'offset' => $d['offset'],
 		);
 
 		// Sortby
@@ -216,6 +218,9 @@ class TTFMP_Post_List {
 		$classes = 'ttfmp-post-list';
 		$classes .= ' columns-' . $ttfmp_data['columns'];
 		$classes .= ' thumbnail-' . $ttfmp_data['thumbnail'];
+		if ( $ttfmp_data['show-excerpt'] ) {
+			$classes .= ' has-excerpt';
+		}
 
 		// Template path
 		$paths = apply_filters( 'ttfmp_post_list_template_paths', array(
@@ -292,7 +297,7 @@ class TTFMP_Post_List {
 		) );
 		ttfmake_get_css()->add( array(
 			'selectors'    => array(
-				'.ttfmp-widget-post-list .ttfmp-post-list-item-date',
+				'.ttfmp-widget-post-list .ttfmp-post-list-item-date a',
 				'.builder-section-postlist .ttfmp-post-list-item-date a'
 			),
 			'declarations' => array(

@@ -12,7 +12,7 @@ $title = apply_filters( 'the_title', $d['title'] );
 $parameters = '';
 $keys = array(
 	'columns', 'type',
-	'sortby', 'keyword', 'count',
+	'sortby', 'keyword', 'count', 'offset',
 	'taxonomy', 'show-title', 'show-date',
 	'show-excerpt', 'show-author', 'show-categories',
 	'show-tags', 'show-comments', 'thumbnail',

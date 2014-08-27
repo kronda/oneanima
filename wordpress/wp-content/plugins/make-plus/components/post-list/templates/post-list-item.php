@@ -6,7 +6,7 @@ $is_widget = ( isset( $ttfmp_data['is-widget'] ) && true === $ttfmp_data['is-wid
 
 // Thumbnail
 $thumbnail = trim( $ttfmp_data['thumbnail'] );
-$thumbnail_size = ( 'top' === $thumbnail ) ? 'large' : 'medium';
+$thumbnail_size = apply_filters( 'ttfmp_posts_list_thumbnail_size', 'large', $ttfmp_data );
 
 // True/false options
 $display_keys = array(
@@ -21,7 +21,10 @@ foreach ( $display_keys as $key ) {
 }
 
 // Title element
-$t_wrap = ( $is_widget ) ? 'strong' : 'h3';
+$t_wrap = 'h3';
+if ( $is_widget || in_array( $thumbnail, array( 'left', 'right' ) ) ) {
+	$t_wrap = 'strong';
+}
 ?>
 
 <?php if ( 'none' !== $thumbnail || $d['show-title'] || $d['show-date'] || $d['show-author'] ) : ?>
@@ -69,12 +72,12 @@ $t_wrap = ( $is_widget ) ? 'strong' : 'h3';
 
 		// Categories
 		if ( $d['show-categories'] && $category_list ) :
-			$taxonomy_output .= __( '<i class="fa fa-file"></i> ', 'make' ) . '%1$s';
+			$taxonomy_output .= __( '<i class="fa fa-file"></i> ', 'make-plus' ) . '%1$s';
 		endif;
 
 		// Tags
 		if ( $d['show-tags'] && $tag_list ) :
-			$taxonomy_output .= __( '<i class="fa fa-tag"></i> ', 'make' ) . '%2$s';
+			$taxonomy_output .= __( '<i class="fa fa-tag"></i> ', 'make-plus' ) . '%2$s';
 		endif;
 
 		// Output

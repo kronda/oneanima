@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Make Plus package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Make Plus 1.2.4\n"
+"Project-Id-Version: Make Plus 1.3.2\n"
 "Report-Msgid-Bugs-To: https://thethemefoundry.com/support\n"
-"POT-Creation-Date: 2014-07-15 20:03:41+00:00\n"
+"POT-Creation-Date: 2014-08-22 15:51:48+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,25 +13,25 @@ msgstr ""
 "Language-Team: The Theme Foundry\n"
 
 #: components/edd/class-section-definitions.php:189
-#: components/post-list/class-section-definitions.php:200
+#: components/post-list/class-section-definitions.php:205
 #: components/woocommerce/class-section-definitions.php:195
 msgid "1"
 msgstr ""
 
 #: components/edd/class-section-definitions.php:190
-#: components/post-list/class-section-definitions.php:201
+#: components/post-list/class-section-definitions.php:206
 #: components/woocommerce/class-section-definitions.php:196
 msgid "2"
 msgstr ""
 
 #: components/edd/class-section-definitions.php:191
-#: components/post-list/class-section-definitions.php:202
+#: components/post-list/class-section-definitions.php:207
 #: components/woocommerce/class-section-definitions.php:197
 msgid "3"
 msgstr ""
 
 #: components/edd/class-section-definitions.php:192
-#: components/post-list/class-section-definitions.php:203
+#: components/post-list/class-section-definitions.php:208
 #: components/woocommerce/class-section-definitions.php:198
 msgid "4"
 msgstr ""
@@ -100,12 +100,12 @@ msgid "Download tags"
 msgstr ""
 
 #: components/edd/class-section-definitions.php:225
-#: components/post-list/class-section-definitions.php:226
+#: components/post-list/class-section-definitions.php:231
 msgid "Date: newest first"
 msgstr ""
 
 #: components/edd/class-section-definitions.php:226
-#: components/post-list/class-section-definitions.php:227
+#: components/post-list/class-section-definitions.php:232
 msgid "Date: oldest first"
 msgstr ""
 
@@ -128,7 +128,7 @@ msgid "Price: high to low"
 msgstr ""
 
 #: components/edd/class-section-definitions.php:231
-#: components/post-list/class-section-definitions.php:232
+#: components/post-list/class-section-definitions.php:237
 msgid "Random"
 msgstr ""
 
@@ -141,7 +141,7 @@ msgid "Excerpt"
 msgstr ""
 
 #: components/edd/class-section-definitions.php:238
-#: components/post-list/class-section-definitions.php:268
+#: components/post-list/class-section-definitions.php:273
 msgid "None"
 msgstr ""
 
@@ -156,13 +156,13 @@ msgid "For Easy Digital Downloads, this view consists of single downloads."
 msgstr ""
 
 #: components/edd/sections/builder-templates/downloads.php:23
-#: components/post-list/sections/builder-templates/post-list.php:29
+#: components/post-list/sections/builder-templates/post-list.php:30
 #: components/woocommerce/sections/builder-templates/product-grid.php:24
 msgid "Columns:"
 msgstr ""
 
 #: components/edd/sections/builder-templates/downloads.php:37
-#: components/post-list/sections/builder-templates/post-list.php:43
+#: components/post-list/sections/builder-templates/post-list.php:44
 #: components/woocommerce/sections/builder-templates/product-grid.php:38
 msgid "Enter title here"
 msgstr ""
@@ -172,7 +172,7 @@ msgid "Show downloads from"
 msgstr ""
 
 #: components/edd/sections/builder-templates/downloads.php:54
-#: components/post-list/sections/builder-templates/post-list.php:71
+#: components/post-list/sections/builder-templates/post-list.php:72
 #: components/woocommerce/sections/builder-templates/product-grid.php:66
 msgid "Sort by"
 msgstr ""
@@ -216,90 +216,115 @@ msgid "Check the box next to a global setting to override it."
 msgstr ""
 
 #: components/per-page/class-metabox.php:160
-#: components/per-page/class-metabox.php:263
-#: components/per-page/class-metabox.php:360
+#: components/per-page/class-metabox.php:303
+#: components/per-page/class-metabox.php:440
 #: shared/shop-settings/layout-product.php:45
 #: shared/shop-settings/layout-shop.php:45
 msgid "Header, Footer, Sidebars"
 msgstr ""
 
 #: components/per-page/class-metabox.php:164
-#: components/per-page/class-metabox.php:268
-#: components/per-page/class-metabox.php:364
+#: components/per-page/class-metabox.php:308
+#: components/per-page/class-metabox.php:444
 #: shared/shop-settings/layout-product.php:66
 #: shared/shop-settings/layout-shop.php:66
 msgid "Hide site header"
 msgstr ""
 
 #: components/per-page/class-metabox.php:172
-#: components/per-page/class-metabox.php:276
-#: components/per-page/class-metabox.php:372
+#: components/per-page/class-metabox.php:316
+#: components/per-page/class-metabox.php:452
 #: shared/shop-settings/layout-product.php:87
 #: shared/shop-settings/layout-shop.php:87
 msgid "Hide site footer"
 msgstr ""
 
 #: components/per-page/class-metabox.php:180
-#: components/per-page/class-metabox.php:284
-#: components/per-page/class-metabox.php:380
+#: components/per-page/class-metabox.php:324
+#: components/per-page/class-metabox.php:460
 #: shared/shop-settings/layout-product.php:108
 #: shared/shop-settings/layout-shop.php:108
 msgid "Show left sidebar"
 msgstr ""
 
 #: components/per-page/class-metabox.php:188
-#: components/per-page/class-metabox.php:292
-#: components/per-page/class-metabox.php:388
+#: components/per-page/class-metabox.php:332
+#: components/per-page/class-metabox.php:468
 #: shared/shop-settings/layout-product.php:129
 #: shared/shop-settings/layout-shop.php:129
 msgid "Show right sidebar"
 msgstr ""
 
 #: components/per-page/class-metabox.php:194
-#: components/per-page/class-metabox.php:298
-#: components/per-page/class-metabox.php:394
+#: components/per-page/class-metabox.php:338
+#: components/per-page/class-metabox.php:474
 #: shared/shop-settings/class-shop-sidebar.php:171
 msgid "Shop Sidebar Location"
 msgstr ""
 
 #: components/per-page/class-metabox.php:203
-#: components/per-page/class-metabox.php:316
+#: components/per-page/class-metabox.php:356
 msgid "Featured Images"
 msgstr ""
 
 #: components/per-page/class-metabox.php:211
-#: components/per-page/class-metabox.php:324
-msgid "Post Date"
+#: components/per-page/class-metabox.php:364
+msgid "Featured Images Alignment"
 msgstr ""
 
 #: components/per-page/class-metabox.php:219
-#: components/per-page/class-metabox.php:332
-msgid "Post Author"
+#: components/per-page/class-metabox.php:372
+msgid "Post Date"
 msgstr ""
 
 #: components/per-page/class-metabox.php:227
+#: components/per-page/class-metabox.php:380
+msgid "Post Date Location"
+msgstr ""
+
+#: components/per-page/class-metabox.php:235
+#: components/per-page/class-metabox.php:388
+msgid "Post Author"
+msgstr ""
+
+#: components/per-page/class-metabox.php:243
+#: components/per-page/class-metabox.php:396
+msgid "Post Author Location"
+msgstr ""
+
+#: components/per-page/class-metabox.php:251
 msgid "Post Meta"
 msgstr ""
 
-#: components/per-page/class-metabox.php:231
-#: components/post-list/sections/builder-templates/post-list.php:135
+#: components/per-page/class-metabox.php:255
+#: components/post-list/sections/builder-templates/post-list.php:140
 msgid "Show categories"
 msgstr ""
 
-#: components/per-page/class-metabox.php:239
-#: components/post-list/sections/builder-templates/post-list.php:141
+#: components/per-page/class-metabox.php:263
+#: components/post-list/sections/builder-templates/post-list.php:146
 msgid "Show tags"
 msgstr ""
 
-#: components/per-page/class-metabox.php:264
+#: components/per-page/class-metabox.php:268
+#: components/per-page/class-metabox.php:404
+msgid "Comment Count"
+msgstr ""
+
+#: components/per-page/class-metabox.php:276
+#: components/per-page/class-metabox.php:412
+msgid "Comment Count Location"
+msgstr ""
+
+#: components/per-page/class-metabox.php:304
 msgid "Header, Footer"
 msgstr ""
 
-#: components/per-page/class-metabox.php:307
+#: components/per-page/class-metabox.php:347
 msgid "Page Title"
 msgstr ""
 
-#: components/per-page/class-metabox.php:311
+#: components/per-page/class-metabox.php:351
 msgid "Hide title"
 msgstr ""
 
@@ -312,43 +337,43 @@ msgstr ""
 msgid "Display your posts or pages in a list or grid layout."
 msgstr ""
 
-#: components/post-list/class-section-definitions.php:228
+#: components/post-list/class-section-definitions.php:233
 msgid "Title: A to Z"
 msgstr ""
 
-#: components/post-list/class-section-definitions.php:229
+#: components/post-list/class-section-definitions.php:234
 msgid "Title: Z to A"
 msgstr ""
 
-#: components/post-list/class-section-definitions.php:230
+#: components/post-list/class-section-definitions.php:235
 msgid "Most comments"
 msgstr ""
 
-#: components/post-list/class-section-definitions.php:231
+#: components/post-list/class-section-definitions.php:236
 msgid "Page order"
 msgstr ""
 
-#: components/post-list/class-section-definitions.php:237
+#: components/post-list/class-section-definitions.php:242
 msgid "All categories/tags"
 msgstr ""
 
-#: components/post-list/class-section-definitions.php:246
+#: components/post-list/class-section-definitions.php:251
 msgid "Categories"
 msgstr ""
 
-#: components/post-list/class-section-definitions.php:258
+#: components/post-list/class-section-definitions.php:263
 msgid "Tags"
 msgstr ""
 
-#: components/post-list/class-section-definitions.php:265
+#: components/post-list/class-section-definitions.php:270
 msgid "Top"
 msgstr ""
 
-#: components/post-list/class-section-definitions.php:266
+#: components/post-list/class-section-definitions.php:271
 msgid "Left"
 msgstr ""
 
-#: components/post-list/class-section-definitions.php:267
+#: components/post-list/class-section-definitions.php:272
 msgid "Right"
 msgstr ""
 
@@ -356,106 +381,114 @@ msgstr ""
 msgid "List posts or pages based on specific criteria. (%s)"
 msgstr ""
 
-#: components/post-list/class-widget.php:112
+#: components/post-list/class-widget.php:113
 msgid "Title:"
 msgstr ""
 
-#: components/post-list/class-widget.php:116
+#: components/post-list/class-widget.php:117
 msgid "Type:"
 msgstr ""
 
-#: components/post-list/class-widget.php:127
+#: components/post-list/class-widget.php:128
 msgid "Sort by:"
 msgstr ""
 
-#: components/post-list/class-widget.php:138
+#: components/post-list/class-widget.php:139
 msgid "Keyword:"
 msgstr ""
 
-#: components/post-list/class-widget.php:142
+#: components/post-list/class-widget.php:143
 msgid "Number of items to show:"
 msgstr ""
 
-#: components/post-list/class-widget.php:143
-#: components/post-list/sections/builder-templates/post-list.php:92
+#: components/post-list/class-widget.php:144
+#: components/post-list/sections/builder-templates/post-list.php:93
 msgid "To show all items, set to <code>-1</code>."
 msgstr ""
 
-#: components/post-list/class-widget.php:147
+#: components/post-list/class-widget.php:148
+msgid "Item offset:"
+msgstr ""
+
+#: components/post-list/class-widget.php:152
 msgid "From:"
 msgstr ""
 
-#: components/post-list/class-widget.php:157
+#: components/post-list/class-widget.php:162
 msgid "Item display:"
 msgstr ""
 
-#: components/post-list/class-widget.php:161
-#: components/post-list/sections/builder-templates/post-list.php:111
+#: components/post-list/class-widget.php:166
+#: components/post-list/sections/builder-templates/post-list.php:116
 msgid "Show item title"
 msgstr ""
 
-#: components/post-list/class-widget.php:165
-#: components/post-list/sections/builder-templates/post-list.php:117
+#: components/post-list/class-widget.php:170
+#: components/post-list/sections/builder-templates/post-list.php:122
 msgid "Show date"
 msgstr ""
 
-#: components/post-list/class-widget.php:169
-#: components/post-list/sections/builder-templates/post-list.php:123
+#: components/post-list/class-widget.php:174
+#: components/post-list/sections/builder-templates/post-list.php:128
 msgid "Show excerpt"
 msgstr ""
 
-#: components/post-list/class-widget.php:173
-#: components/post-list/sections/builder-templates/post-list.php:129
+#: components/post-list/class-widget.php:178
+#: components/post-list/sections/builder-templates/post-list.php:134
 msgid "Show author"
 msgstr ""
 
-#: components/post-list/class-widget.php:177
-#: components/post-list/sections/builder-templates/post-list.php:147
+#: components/post-list/class-widget.php:182
+#: components/post-list/sections/builder-templates/post-list.php:152
 msgid "Show comment count"
 msgstr ""
 
-#: components/post-list/class-widget.php:181
+#: components/post-list/class-widget.php:186
 msgid "Show thumbnail:"
 msgstr ""
 
-#: components/post-list/sections/builder-templates/post-list.php:49
+#: components/post-list/sections/builder-templates/post-list.php:50
 msgid "Type"
 msgstr ""
 
-#: components/post-list/sections/builder-templates/post-list.php:60
+#: components/post-list/sections/builder-templates/post-list.php:61
 #: components/woocommerce/sections/builder-templates/product-grid.php:55
 msgid "From"
 msgstr ""
 
-#: components/post-list/sections/builder-templates/post-list.php:82
+#: components/post-list/sections/builder-templates/post-list.php:83
 msgid "Keyword"
 msgstr ""
 
-#: components/post-list/sections/builder-templates/post-list.php:84
+#: components/post-list/sections/builder-templates/post-list.php:85
 msgid "e.g. coffee"
 msgstr ""
 
-#: components/post-list/sections/builder-templates/post-list.php:89
+#: components/post-list/sections/builder-templates/post-list.php:90
 msgid "Number of items to show"
 msgstr ""
 
-#: components/post-list/sections/builder-templates/post-list.php:94
+#: components/post-list/sections/builder-templates/post-list.php:95
+msgid "Item offset"
+msgstr ""
+
+#: components/post-list/sections/builder-templates/post-list.php:99
 msgid "Show thumbnail"
 msgstr ""
 
-#: components/post-list/sections/builder-templates/post-list.php:106
+#: components/post-list/sections/builder-templates/post-list.php:111
 msgid "Item display"
 msgstr ""
 
-#: components/post-list/templates/post-list-item.php:72
+#: components/post-list/templates/post-list-item.php:75
 msgid "<i class=\"fa fa-file\"></i> "
 msgstr ""
 
-#: components/post-list/templates/post-list-item.php:77
+#: components/post-list/templates/post-list-item.php:80
 msgid "<i class=\"fa fa-tag\"></i> "
 msgstr ""
 
-#: components/post-list/templates/post-list-item.php:92
+#: components/post-list/templates/post-list-item.php:95
 msgid "%d comment"
 msgid_plural "%d comments"
 msgstr[0] ""
@@ -560,6 +593,27 @@ msgstr ""
 msgid "Load Kit"
 msgstr ""
 
+#: components/text-column-layout/text-column-layout.php:139
+msgid "Layout:"
+msgstr ""
+
+#: components/text-column-layout/text-column-layout.php:281
+#: components/text-column-layout/text-column-layout.php:286
+msgid "Equal Width"
+msgstr ""
+
+#: components/text-column-layout/text-column-layout.php:282
+msgid "Wide | Narrow"
+msgstr ""
+
+#: components/text-column-layout/text-column-layout.php:283
+msgid "Wider | Narrower"
+msgstr ""
+
+#: components/text-column-layout/text-column-layout.php:287
+msgid "Wide | Narrow | Narrow"
+msgstr ""
+
 #: components/typekit/customizer.php:94
 msgid "Typekit Kit ID"
 msgstr ""
@@ -590,31 +644,31 @@ msgstr ""
 msgid "Sidebar"
 msgstr ""
 
-#: components/widget-area/widget-area.php:130
-#: components/widget-area/widget-area.php:163
+#: components/widget-area/widget-area.php:134
+#: components/widget-area/widget-area.php:167
 msgid "Convert to widget area"
 msgstr ""
 
-#: components/widget-area/widget-area.php:131
-#: components/widget-area/widget-area.php:161
+#: components/widget-area/widget-area.php:135
+#: components/widget-area/widget-area.php:165
 msgid "Revert to regular column"
 msgstr ""
 
-#: components/widget-area/widget-area.php:200
+#: components/widget-area/widget-area.php:204
 msgid "Enter name here"
 msgstr ""
 
-#: components/widget-area/widget-area.php:202
+#: components/widget-area/widget-area.php:206
 msgid ""
 "There are no widgets in this area. After saving this page, go to the Theme "
 "Customizer to manage your widgets."
 msgstr ""
 
-#: components/widget-area/widget-area.php:204
+#: components/widget-area/widget-area.php:208
 msgid "To manage your widgets, please go to the Theme Customizer."
 msgstr ""
 
-#: components/widget-area/widget-area.php:206
+#: components/widget-area/widget-area.php:210
 msgid "Widgets in this area:"
 msgstr ""
 
@@ -768,38 +822,38 @@ msgstr ""
 msgid "Highlight Color"
 msgstr ""
 
-#: updater/api-key.php:50 updater/api-key.php:51
+#: updater/api-key.php:52 updater/api-key.php:53
 msgid "Updater API Key"
 msgstr ""
 
-#: updater/api-key.php:69
+#: updater/api-key.php:71
 msgid "Updater Authorization"
 msgstr ""
 
-#: updater/api-key.php:95
+#: updater/api-key.php:97
 msgid "Authorize Site and Complete Update"
 msgstr ""
 
-#: updater/api-key.php:95
+#: updater/api-key.php:97
 msgid "Authorize Site"
 msgstr ""
 
-#: updater/api-key.php:147
+#: updater/api-key.php:153
 msgid "E-mail Address"
 msgstr ""
 
-#: updater/api-key.php:156
+#: updater/api-key.php:162
 msgid "Password"
 msgstr ""
 
-#: updater/api-key.php:175
+#: updater/api-key.php:181
 msgid ""
 "<h3 class=\"title updater-authed\">API Key: <strong>%1$s</strong></h3>\n"
 "\t\t\t\t\t<p>Problems? <a href=\"#\" class=\"updater-re-auth\">Try "
 "authorizing again</a>.</p>"
 msgstr ""
 
-#: updater/api-key.php:183
+#: updater/api-key.php:189
 msgid ""
 "<p>Please authorize your theme for automatic updates with the same "
 "credentials you use to sign into The Theme Foundry website. If you have "
@@ -809,11 +863,11 @@ msgid ""
 "product information to authorize this site.</p>"
 msgstr ""
 
-#: updater/api-key.php:261
+#: updater/api-key.php:267
 msgid "You site is authorized for automatic updates from The Theme Foundry."
 msgstr ""
 
-#: updater/api-key.php:278 updater/api-key.php:302
+#: updater/api-key.php:284 updater/api-key.php:308
 msgid ""
 "There was an error authorizing your site for automatic updates from The "
 "Theme Foundry."

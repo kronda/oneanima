@@ -156,7 +156,7 @@ class TTFMP_Customizer {
 				array(
 					'section'  => $section,
 					'type'     => 'heading',
-					'label'    => __( 'White Label', 'make' ),
+					'label'    => __( 'White Label', 'make-plus' ),
 					'priority' => $priority->add()
 				)
 			)
@@ -177,7 +177,7 @@ class TTFMP_Customizer {
 			array(
 				'settings' => $setting_id,
 				'section'  => $section,
-				'label'    => __( 'Hide theme credit', 'make' ),
+				'label'    => __( 'Hide theme credit', 'make-plus' ),
 				'type'     => 'checkbox',
 				'priority' => $priority->add()
 			)

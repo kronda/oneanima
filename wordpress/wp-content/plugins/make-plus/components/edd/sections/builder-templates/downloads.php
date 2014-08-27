@@ -20,7 +20,7 @@ $data = wp_parse_args( $ttfmake_section_data['data'], $defaults );
 ?>
 
 	<div class="ttfmake-columns-select-wrapper">
-		<label for="<?php echo $section_name; ?>[columns]"><?php _e( 'Columns:', 'make' ); ?></label>
+		<label for="<?php echo $section_name; ?>[columns]"><?php _e( 'Columns:', 'make-plus' ); ?></label>
 		<select id="<?php echo $section_name; ?>[columns]" name="<?php echo $section_name; ?>[columns]">
 			<?php foreach ( ttfmake_get_section_choices( 'columns', 'edd-downloads' ) as $value => $label ) : ?>
 				<option value="<?php echo esc_attr( $value ); ?>"<?php selected( $value, $data['columns'] ); ?>>

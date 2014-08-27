@@ -1,4 +1,30 @@
 /*---------------------------------------------------------
+ Post List common (post-list.scss)
+-------------------------------------------------------- */
+.ttfmp-post-list {
+	.ttfmp-post-list-item-date {
+		display: block;
+	}
+	.ttfmp-post-list-item {
+		float: left;
+		width: 100%;
+		margin-right: 0; //reset
+	}
+	&.thumbnail-left.has-excerpt, &.thumbnail-right.has-excerpt {
+		.ttfmp-post-list-item-header {
+			zoom: 1;
+			&:before,
+			&:after {
+				display: table;
+				content: "";
+			}
+			&:after {
+				clear: both;
+			}
+		}
+	}
+}
+/*---------------------------------------------------------
  Post List widget (post-list.scss)
 -------------------------------------------------------- */
 .ttfmp-widget-post-list {
@@ -11,6 +37,12 @@
 	&:after {
 		clear: both;
 	}
+	.ttfmp-post-list-item {
+		margin-bottom: 22px;
+		&:last-of-type {
+			margin-bottom: 0; //reset
+		}
+	}
 	.ttfmp-post-list-item-title {
 		display: block;
 		a {
@@ -22,18 +54,10 @@
 		}
 	}
 	.ttfmp-post-list-item-date {
-		display: block;
-		margin-bottom: 11px;
 		font-style: italic;
 		a {
 			color: #171717; //text
 			font-weight: normal; //reset
-		}
-	}
-	.ttfmp-post-list-item {
-		margin-bottom: 22px;
-		&:last-of-type {
-			margin-bottom: 0; //reset
 		}
 	}
 	.ttfmp-post-list-item-content p {
@@ -44,11 +68,18 @@
 	}
 	.ttfmp-post-list-item-comment-link {
 		display: block;
-		margin-top: 11px;
 		font-weight: normal; //reset
 		color: #b9bcbf; // detail
 		&:hover {
 			color: #3070d1; //primary
+		}
+	}
+	.has-excerpt {
+		.ttfmp-post-list-item-date {
+			margin-bottom: 11px;
+		}
+		.ttfmp-post-list-item-comment-link {
+			margin-top: 11px;
 		}
 	}
 	.ttfmp-post-list-item-thumb {
@@ -72,8 +103,6 @@
 		margin-bottom: 44px;
 	}
 	.ttfmp-post-list-item-date {
-		display: block;
-		margin-bottom: 22px;
 		font-size: 12px;
 		font-size: 1.2rem;
 		font-weight: bold;
@@ -85,6 +114,7 @@
 		}
 	}
 	.ttfmp-post-list-item-author {
+		display: block;
 		font-size: 15px;
 		font-size: 1.5rem;
 	}
@@ -111,48 +141,72 @@
 			}
 		}
 	}
-	.ttfmp-post-list-item-author {
-		display: block;
-		margin-bottom: 11px;
-	}
 	.ttfmp-post-list-item-comment-link {
 		display: block;
-		margin-top: 11px;
+	}
+	.has-excerpt {
+		.ttfmp-post-list-item-date {
+			margin-bottom: 22px;
+		}
+		.ttfmp-post-list-item-author {
+			margin-bottom: 11px;
+		}
+		.ttfmp-post-list-item-comment-link {
+			margin-top: 11px;
+		}
+	}
+	.ttfmp-post-list-item-thumb {
+		&.position-left {
+			float: left;
+			width: 48.33333%;
+			margin-right: 3.33333%;
+		}
+		&.position-right {
+			float: right;
+			width: 48.33333%;
+			left: 3.33333%;
+		}
+	}
+	@media screen and (min-width: 800px) {
+		.ttfmp-post-list.columns-1 {
+			.ttfmp-post-list-item-header {
+				&:before,
+				&:after {
+					display: block;
+					content: none;
+				}
+				&:after {
+					clear: none;
+				}
+			}
+		}
 	}
 }
 /*---------------------------------------------------------
  Post List grid (post-list.scss)
 -------------------------------------------------------- */
-.ttfmp-post-list.columns-1,
-.ttfmp-post-list.columns-2,
-.ttfmp-post-list.columns-3,
-.ttfmp-post-list.columns-4, {
-	.ttfmp-post-list-item {
-		float: left;
-		width: 100%;
-		margin-right: 0; //reset
-	}
-}
 @media screen and (min-width: 800px) {
-	.ttfmp-post-list.columns-2 .ttfmp-post-list-item {
-		width: 48.33333%;
-		margin-right: 3.33333%;
-		&.last {
-			margin-right: 0; //reset
+	.ttfmp-post-list {
+		&.columns-2 .ttfmp-post-list-item {
+			width: 48.33333%;
+			margin-right: 3.33333%;
+			&.last {
+				margin-right: 0; //reset
+			}
 		}
-	}
-	.ttfmp-post-list.columns-3 .ttfmp-post-list-item {
-		width: 31.11111%;
-		margin-right: 3.33333%;
-		&.last {
-			margin-right: 0; //reset
+		&.columns-3 .ttfmp-post-list-item {
+			width: 31.11111%;
+			margin-right: 3.33333%;
+			&.last {
+				margin-right: 0; //reset
+			}
 		}
-	}
-	.ttfmp-post-list.columns-4 .ttfmp-post-list-item {
-		width: 22.5%;
-		margin-right: 3.33333%;
-		&.last {
-			margin-right: 0; //reset
+		&.columns-4 .ttfmp-post-list-item {
+			width: 22.5%;
+			margin-right: 3.33333%;
+			&.last {
+				margin-right: 0; //reset
+			}
 		}
 	}
 }

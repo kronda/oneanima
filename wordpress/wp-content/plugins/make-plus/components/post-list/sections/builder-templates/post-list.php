@@ -12,6 +12,7 @@ $defaults = array(
 	'sortby' => ttfmake_get_section_default( 'sortby', 'post-list' ),
 	'keyword' => ttfmake_get_section_default( 'keyword', 'post-list' ),
 	'count' => ttfmake_get_section_default( 'count', 'post-list' ),
+	'offset' => ttfmake_get_section_default( 'offset', 'post-list' ),
 	'taxonomy' => ttfmake_get_section_default( 'taxonomy', 'post-list' ),
 	'show-title' => ttfmake_get_section_default( 'show-title', 'post-list' ),
 	'show-date' => ttfmake_get_section_default( 'show-date', 'post-list' ),
@@ -26,7 +27,7 @@ $data = wp_parse_args( $ttfmake_section_data['data'], $defaults );
 ?>
 
 	<div class="ttfmake-columns-select-wrapper">
-		<label for="<?php echo $section_name; ?>[columns]"><?php _e( 'Columns:', 'make' ); ?></label>
+		<label for="<?php echo $section_name; ?>[columns]"><?php _e( 'Columns:', 'make-plus' ); ?></label>
 		<select id="<?php echo $section_name; ?>[columns]" name="<?php echo $section_name; ?>[columns]">
 			<?php foreach ( ttfmake_get_section_choices( 'columns', 'post-list' ) as $value => $label ) : ?>
 				<option value="<?php echo esc_attr( $value ); ?>"<?php selected( $value, $data['columns'] ); ?>>
@@ -90,6 +91,10 @@ $data = wp_parse_args( $ttfmake_section_data['data'], $defaults );
 		</h4>
 		<input id="<?php echo $section_name; ?>[count]" class="code" type="number" name="<?php echo $section_name; ?>[count]" value="<?php echo (int) $data['count']; ?>" />
 		<p><?php _e( 'To show all items, set to <code>-1</code>.', 'make-plus' ); ?></p>
+		<h4 class="ttfmake-post-list-options-title">
+			<?php _e( 'Item offset', 'make-plus' ); ?>
+		</h4>
+		<input id="<?php echo $section_name; ?>[offset]" class="code" type="number" name="<?php echo $section_name; ?>[offset]" value="<?php echo (int) $data['offset']; ?>" />
 		<div class="ttfmake-thumbnail-select-wrapper">
 			<h4><?php _e( 'Show thumbnail', 'make-plus' ); ?></h4>
 			<select id="<?php echo $section_name; ?>[thumbnail]" name="<?php echo $section_name; ?>[thumbnail]">

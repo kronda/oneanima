@@ -89,6 +89,7 @@ class TTFMP_Post_List_Widget extends WP_Widget {
 			'sortby' => ttfmake_get_section_default( 'sortby', 'post-list' ),
 			'keyword' => ttfmake_get_section_default( 'keyword', 'post-list' ),
 			'count' => 3,
+			'offset' => ttfmake_get_section_default( 'offset', 'post-list' ),
 			'taxonomy' => ttfmake_get_section_default( 'taxonomy', 'post-list' ),
 			'show-title' => ttfmake_get_section_default( 'show-title', 'post-list' ),
 			'show-date' => ttfmake_get_section_default( 'show-date', 'post-list' ),
@@ -141,6 +142,10 @@ class TTFMP_Post_List_Widget extends WP_Widget {
 		<p>
 			<label for="<?php echo $this->get_field_id( 'count' ); ?>"><?php _e( 'Number of items to show:' ); ?></label> <input class="widefat" id="<?php echo $this->get_field_id( 'count' ); ?>" name="<?php echo $this->get_field_name( 'count' ); ?>" type="number" value="<?php echo $instance['count']; ?>" />
 			<small style="display: block; padding-top: 5px;"><?php _e( 'To show all items, set to <code>-1</code>.', 'make-plus' ); ?></small>
+		</p>
+
+		<p>
+			<label for="<?php echo $this->get_field_id( 'offset' ); ?>"><?php _e( 'Item offset:' ); ?></label> <input class="widefat" id="<?php echo $this->get_field_id( 'offset' ); ?>" name="<?php echo $this->get_field_name( 'offset' ); ?>" type="number" value="<?php echo $instance['offset']; ?>" />
 		</p>
 
 		<p>

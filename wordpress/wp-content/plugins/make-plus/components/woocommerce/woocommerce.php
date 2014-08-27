@@ -169,7 +169,7 @@ class TTFMP_WooCommerce {
 		?>
 		<tr valign="top" class="woocommerce_frontend_css_colors">
 			<th scope="row" class="titledesc">
-				<?php _e( 'Frontend Styles', 'woocommerce' ); ?>
+				<?php _e( 'Frontend Styles', 'make-plus' ); ?>
 			</th>
 			<td class="forminp">
 				<span class="description">
@@ -193,7 +193,7 @@ class TTFMP_WooCommerce {
 					)
 				);
 			} else {
-				echo __( 'To edit colours <code>woocommerce/assets/css/woocommerce-base.less</code> and <code>woocommerce.css</code> need to be writable. See <a href="http://codex.wordpress.org/Changing_File_Permissions">the Codex</a> for more information.', 'woocommerce' );
+				echo __( 'To edit colours <code>woocommerce/assets/css/woocommerce-base.less</code> and <code>woocommerce.css</code> need to be writable. See <a href="http://codex.wordpress.org/Changing_File_Permissions">the Codex</a> for more information.', 'make-plus' );
 			}
 			?>
 				</span>
@@ -328,7 +328,7 @@ class TTFMP_WooCommerce {
 				// Reset the base
 				file_put_contents( $base_file, $original_base );
 			} catch ( exception $ex ) {
-				wp_die( __( 'Could not compile woocommerce.less:', 'woocommerce' ) . ' ' . $ex->getMessage() );
+				wp_die( __( 'Could not compile woocommerce.less:', 'make-plus' ) . ' ' . $ex->getMessage() );
 			}
 		}
 	}

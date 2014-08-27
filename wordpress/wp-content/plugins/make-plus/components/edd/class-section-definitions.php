@@ -186,10 +186,10 @@ class TTFMP_EDD_Section_Definitions {
 		switch ( $choice_id ) {
 			case 'edd-downloads-columns' :
 				$choices = array(
-					1 => __( '1', 'make' ),
-					2 => __( '2', 'make' ),
-					3 => __( '3', 'make' ),
-					4 => __( '4', 'make' ),
+					1 => __( '1', 'make-plus' ),
+					2 => __( '2', 'make-plus' ),
+					3 => __( '3', 'make-plus' ),
+					4 => __( '4', 'make-plus' ),
 				);
 				break;
 			case 'edd-downloads-taxonomy' :
@@ -276,8 +276,12 @@ class TTFMP_EDD_Section_Definitions {
 	 * @return void
 	 */
 	public function admin_enqueue_scripts( $hook_suffix ) {
+		// Have to be careful with this test because this function was introduced in Make 1.2.0.
+		$post_type_supports_builder = ( function_exists( 'ttfmake_post_type_supports_builder' ) ) ? ttfmake_post_type_supports_builder( get_post_type() ) : false;
+		$post_type_is_page          = ( 'page' === get_post_type() );
+
 		// Only load resources if they are needed on the current page
-		if ( ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) ) || 'page' !== get_post_type() ) {
+		if ( ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) ) || ( ! $post_type_supports_builder && ! $post_type_is_page ) ) {
 			return;
 		}
 
@@ -301,7 +305,11 @@ class TTFMP_EDD_Section_Definitions {
 	 * @return void
 	 */
 	public function admin_head_script() {
-		if ( 'page' !== get_post_type() || ( defined( 'EDD_VERSION' ) && true === version_compare( EDD_VERSION, '2.0', '>' ) ) ) {
+		// Have to be careful with this test because this function was introduced in Make 1.2.0.
+		$post_type_supports_builder = ( function_exists( 'ttfmake_post_type_supports_builder' ) ) ? ttfmake_post_type_supports_builder( get_post_type() ) : false;
+		$post_type_is_page          = ( 'page' === get_post_type() );
+
+		if ( ( ! $post_type_supports_builder && ! $post_type_is_page ) || ( defined( 'EDD_VERSION' ) && true === version_compare( EDD_VERSION, '2.0', '>' ) ) ) {
 			return;
 		}
 		?>

@@ -97,6 +97,7 @@ class TTFMP_Post_List_Section_Definitions {
 			'sortby' => ttfmake_get_section_default( 'sortby', 'post-list' ),
 			'keyword' => ttfmake_get_section_default( 'keyword', 'post-list' ),
 			'count' => ttfmake_get_section_default( 'count', 'post-list' ),
+			'offset' => ttfmake_get_section_default( 'offset', 'post-list' ),
 			'taxonomy' => ttfmake_get_section_default( 'taxonomy', 'post-list' ),
 			'show-title' => ttfmake_get_section_default( 'show-title', 'post-list' ),
 			'show-date' => ttfmake_get_section_default( 'show-date', 'post-list' ),
@@ -133,6 +134,9 @@ class TTFMP_Post_List_Section_Definitions {
 		}
 		$clean_data['count'] = $clean_count;
 
+		// Offset
+		$clean_data['offset'] = absint( $parsed_data['offset'] );
+
 		// Taxonomy
 		$clean_data['taxonomy'] = ttfmake_sanitize_section_choice( $parsed_data['taxonomy'], 'taxonomy', 'post-list' );
 
@@ -163,6 +167,7 @@ class TTFMP_Post_List_Section_Definitions {
 			'post-list-sortby' => 'date-desc',
 			'post-list-keyword' => '',
 			'post-list-count' => 6,
+			'post-list-offset' => 0,
 			'post-list-taxonomy' => 'all',
 			'post-list-show-title' => 1,
 			'post-list-show-date' => 1,
@@ -197,10 +202,10 @@ class TTFMP_Post_List_Section_Definitions {
 		switch ( $choice_id ) {
 			case 'post-list-columns' :
 				$choices = array(
-					1 => __( '1', 'make' ),
-					2 => __( '2', 'make' ),
-					3 => __( '3', 'make' ),
-					4 => __( '4', 'make' ),
+					1 => __( '1', 'make-plus' ),
+					2 => __( '2', 'make-plus' ),
+					3 => __( '3', 'make-plus' ),
+					4 => __( '4', 'make-plus' ),
 				);
 				break;
 			case 'post-list-type' :
@@ -306,8 +311,12 @@ class TTFMP_Post_List_Section_Definitions {
 	 * @return void
 	 */
 	public function admin_enqueue_scripts( $hook_suffix ) {
+		// Have to be careful with this test because this function was introduced in Make 1.2.0.
+		$post_type_supports_builder = ( function_exists( 'ttfmake_post_type_supports_builder' ) ) ? ttfmake_post_type_supports_builder( get_post_type() ) : false;
+		$post_type_is_page          = ( 'page' === get_post_type() );
+
 		// Only load resources if they are needed on the current page
-		if ( ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) ) || 'page' !== get_post_type() ) {
+		if ( ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) ) || ( ! $post_type_supports_builder && ! $post_type_is_page ) ) {
 			return;
 		}
 

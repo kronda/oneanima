@@ -58,17 +58,27 @@ class TTFMP_PerPage_Options {
 
 		$post = array(
 			'featured-images',
+			'featured-images-alignment',
 			'post-date',
+			'post-date-location',
 			'post-author',
+			'post-author-location',
 			'show-categories',
 			'show-tags',
+			'comment-count',
+			'comment-count-location',
 		);
 
 		$page = array(
 			'featured-images',
+			'featured-images-alignment',
 			'post-date',
+			'post-date-location',
 			'post-author',
+			'post-author-location',
 			'hide-title',
+			'comment-count',
+			'comment-count-location',
 		);
 
 		if ( 'product' === $view || 'shop' === $view ) {
@@ -186,11 +196,16 @@ class TTFMP_PerPage_Options {
 			'hide-footer' => 'absint',
 			'sidebar-left' => 'absint',
 			'sidebar-right' => 'absint',
-			'post-author' => 'ttfmake_sanitize_choice',
 			'featured-images' => 'ttfmake_sanitize_choice',
+			'featured-images-alignment' => 'ttfmake_sanitize_choice',
 			'post-date' => 'ttfmake_sanitize_choice',
+			'post-date-location' => 'ttfmake_sanitize_choice',
+			'post-author' => 'ttfmake_sanitize_choice',
+			'post-author-location' => 'ttfmake_sanitize_choice',
 			'show-categories' => 'absint',
 			'show-tags' => 'absint',
+			'comment-count' => 'ttfmake_sanitize_choice',
+			'comment-count-location' => 'ttfmake_sanitize_choice',
 			'hide-title' => 'absint',
 			'shop-sidebar' => 'ttfmake_sanitize_choice',
 		);

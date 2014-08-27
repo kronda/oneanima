@@ -23,7 +23,7 @@
 	opacity: 0;
 }
 .ttfmp-widget-area-overlay-region-active .ttfmp-widget-area-overlay {
-	z-index: 10;
+	z-index: 1111;
 	opacity: 1;
 }
 .ttfmp-widget-area-display {

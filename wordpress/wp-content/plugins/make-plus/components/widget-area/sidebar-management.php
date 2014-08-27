@@ -72,8 +72,8 @@ class TTFMP_Sidebar_Management {
 
 					register_sidebar( array(
 						'id'            => $id,
-						'name'          => $this->get_sidebar_title( $sidebar['id'] ),
-						'description'   => $this->get_sidebar_description( $sidebar['id'] ),
+						'name'          => stripslashes( $this->get_sidebar_title( $sidebar['id'] ) ),
+						'description'   => stripslashes( $this->get_sidebar_description( $sidebar['id'] ) ),
 						'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 						'after_widget'  => '</aside>',
 						'before_title'  => '<h4 class="widget-title">',
@@ -100,7 +100,7 @@ class TTFMP_Sidebar_Management {
 			$label = esc_html( $sidebar['label'] );
 		} else {
 			$sidebar_information = $this->parse_sidebar_id( $id );
-			$label               = __( 'Sidebar', 'ttfmp' ) . ' ' . $sidebar_information['page_id'] . '-' . $sidebar_information['section_id'] . '-' . $sidebar_information['column_id'];
+			$label               = __( 'Sidebar', 'make-plus' ) . ' ' . $sidebar_information['page_id'] . '-' . $sidebar_information['section_id'] . '-' . $sidebar_information['column_id'];
 		}
 
 		return $label;
@@ -130,7 +130,7 @@ class TTFMP_Sidebar_Management {
 				'Add widgets to the "%s" widget area.',
 				$label
 			),
-			'ttfmp'
+			'make-plus'
 		);
 	}
 

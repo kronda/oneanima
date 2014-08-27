@@ -3,8 +3,8 @@ Contributors: thethemefoundry, dstrojny, jupiterwise, scottrrollo, tollmanz
 Donate link: https://thethemefoundry.com
 Tags: woocommerce, sidebars, widgets, customizer, fonts, typekit, demo content, page builder
 Requires at least: 3.9
-Tested up to: 3.9.1
-Stable tag: 1.2.4
+Tested up to: 3.9.2
+Stable tag: 1.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,6 +31,31 @@ Make gives you the flexibility to build the site that you want. Make Plus makes 
 For more information, please see the [Make Plus support page](https://thethemefoundry.com/tutorials/make/).
 
 == Changelog ==
+
+= 1.3.2 =
+
+* Fixed admin notice caused by using get_the_ID() when the post object was not available
+
+= 1.3.1 =
+
+* Fixed bug that caused multiple text sections with different column layouts to be implemented incorrectly
+* Fixed bug with widget area overlays resting above admin menu submenus
+
+= 1.3.0 =
+
+* Added text column layout options (requires Make 1.2.0)
+* Fixed 'left' and 'right' thumbnail position options in Posts List builder section
+* Fixed slashes added to sidebar labels
+
+= 1.2.6 =
+
+* Added additional layout setting overrides
+* Added "offset" parameter to Posts List builder section and widget
+* Fixed fatal error for PHP 5.2 users
+
+= 1.2.5 =
+
+* Fixed issue that caused false update notices
 
 = 1.2.4 =
 
@@ -88,6 +113,26 @@ For more information, please see the [Make Plus support page](https://thethemefo
 * Initial release
 
 == Upgrade Notice ==
+
+= 1.3.2 =
+
+Fix PHP notice
+
+= 1.3.1 =
+
+Bug fixes for text column layouts
+
+= 1.3.0 =
+
+Adds text column layout options and fixes minor bugs
+
+= 1.2.6 =
+
+Fixes fatal error for PHP 5.2 users, adds layout overrides, and offset parameter to post listing section
+
+= 1.2.5 =
+
+Fixes issue with update notices
 
 = 1.2.4 =
 

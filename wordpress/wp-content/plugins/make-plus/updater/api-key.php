@@ -35,6 +35,8 @@ class TTF_Updater_API_Key {
 		add_action( 'admin_menu', array( $this, 'add_tool_page' ) );
 		add_action( 'admin_init', array( $this, 'add_settings' ) );
 		add_filter( 'wp_redirect', array( $this, 'handle_redirect_after_save' ), 99, 2 );
+
+		add_action( 'admin_footer', array( $this, 'display_message' ) );
 	}
 
 	/**
@@ -63,7 +65,7 @@ class TTF_Updater_API_Key {
 	 * @return void
 	 */
 	public function render_updater_auth_page() {
-		$is_redirect = ( isset( $_GET['action'] ) && isset( $_GET['plugin'] ) );
+		$is_redirect = ( isset( $_GET['action'] ) && ( isset( $_GET['plugin'] ) || isset( $_GET['theme'] ) ) );
 	?>
 		<div class="wrap">
 			<h2><?php _e( 'Updater Authorization', 'make-plus' ); ?></h2>
@@ -96,7 +98,11 @@ class TTF_Updater_API_Key {
 						<input type="submit" name="submit" id="submit" class="button button-primary" value="<?php echo $label; ?>">
 					</p>
 					<?php if ( true === $is_redirect ) : ?>
-					<input type="hidden" name="redirect-plugin" value="<?php echo esc_attr( $_GET['plugin'] ); ?>">
+						<?php if ( isset( $_GET['plugin'] ) ) : ?>
+						<input type="hidden" name="redirect-plugin" value="<?php echo esc_attr( $_GET['plugin'] ); ?>">
+						<?php elseif ( isset( $_GET['theme'] ) ) : ?>
+						<input type="hidden" name="redirect-theme" value="<?php echo esc_attr( $_GET['theme'] ); ?>">
+						<?php endif; ?>
 					<input type="hidden" name="redirect-action" value="<?php echo esc_attr( $_GET['action'] ); ?>">
 					<?php wp_nonce_field( 'redirect', 'redirect-nonce' ); ?>
 					<?php endif; ?>
@@ -319,25 +325,52 @@ class TTF_Updater_API_Key {
 	 */
 	public function handle_redirect_after_save( $location, $status ) {
 		// Is this screen accessed as part of the update process
-		if ( ! isset( $_POST['redirect-plugin'] ) || ! isset( $_POST['redirect-action'] ) || ! wp_verify_nonce( $_POST['redirect-nonce'], 'redirect' ) ) {
+		if ( ! ( isset( $_POST['redirect-plugin'] ) || isset( $_POST['redirect-theme'] ) ) || ! isset( $_POST['redirect-action'] ) || ! wp_verify_nonce( $_POST['redirect-nonce'], 'redirect' ) ) {
 			return $location;
 		}
 
 		// Set up the GET args for the redirection
 		$args = array(
-			'action'   => $_POST['redirect-action'],
-			'plugin'   => $_POST['redirect-plugin'],
-			'_wpnonce' => wp_create_nonce( 'upgrade-plugin_' . $_POST['redirect-plugin'] ),
+			'action' => $_POST['redirect-action'],
 		);
 
-		if ( 'upgrade-plugin' === $_POST['redirect-action'] ) {
+		if ( isset( $_POST['redirect-plugin'] ) ) {
+			$args['plugin']   = $_POST['redirect-plugin'];
+			$args['_wpnonce'] = wp_create_nonce( 'upgrade-plugin_' . $_POST['redirect-plugin'] );
+		} else if ( isset( $_POST['redirect-theme'] ) ) {
+			$args['theme']    = $_POST['redirect-theme'];
+			$args['_wpnonce'] = wp_create_nonce( 'upgrade-theme_' . $_POST['redirect-theme'] );
+		}
+
+		if ( 'upgrade-plugin' === $_POST['redirect-action'] || 'upgrade-theme' === $_POST['redirect-action'] ) {
 			return add_query_arg(
 				$args,
 				admin_url( 'update.php' )
 			);
 		} else {
+			$this->add_msg( 'You are now authorized for updates from The Theme Foundry. Please try your update again.' );
 			return admin_url( 'update-core.php' );
 		}
+	}
+
+	/**
+	 * Output a message if necessary.
+	 *
+	 * @since  1.0.1.
+	 *
+	 * @return void
+	 */
+	public function display_message() {
+		global $pagenow;
+
+		if ( 'update-core.php' === $pagenow && $msg = get_transient( 'updater-auth-' . get_current_user_id() ) ) : ?>
+		<div id="api-auth-message" class="updated settings-error">
+			<p>
+				<?php echo esc_html( $msg ); ?>
+			</p>
+		</div>
+		<?php delete_transient( 'updater-auth-' . get_current_user_id() );
+		endif;
 	}
 
 	/**
