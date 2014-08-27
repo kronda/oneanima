@@ -1,5 +1,8 @@
 .builder-text-columns-1 {
-  .builder-section-content {
-    max-width: 60%;
+  @include media($tablet) {
+    .builder-section-content {
+      max-width: 60%;
+    }
   }
+  
 }

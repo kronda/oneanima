@@ -1,11 +1,14 @@
 .home {
   .builder-section-first {
-    p {
-      font-size: 1.4em;
+    @include media($tablet) {
+      p {
+        font-size: 1.4em;
+      }
+      .ttfmake-button {
+        font-size: 0.8em;
+      }
     }
-    .ttfmake-button {
-      font-size: 0.8em;
-    }
+
   }
   
 }
