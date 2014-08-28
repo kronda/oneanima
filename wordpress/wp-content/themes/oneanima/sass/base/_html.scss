@@ -1,8 +1,13 @@
 .builder-text-columns-1 {
-  @include media($tablet) {
+  @include media($mobile) {
+    .builder-section-content {
+      width: 100%;
+    }
+  }
+
+  @include media($phablet) {
     .builder-section-content {
       max-width: 60%;
     }
-  }
-  
+  }  
 }

@@ -80,8 +80,14 @@
     margin-left: 0;
   }
 }
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 480px) {
   /* line 3, ../sass/base/_html.scss */
+  .builder-text-columns-1 .builder-section-content {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 767px) {
+  /* line 9, ../sass/base/_html.scss */
   .builder-text-columns-1 .builder-section-content {
     max-width: 60%;
   }
